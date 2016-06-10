@@ -200,6 +200,12 @@
       </div>
       <div class="row">
         <div class="col-md-12">
+	   <br/>
+	   <button id="download-as-zip" class="btn btn-primary">Download as zip</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
             <hr>
 	    <span style="color: gray;"><i>A service provided by the Data Analysis and Informatics Core of the Adolescent Brain Cognitive Development Study.</i></span>
 	</div>

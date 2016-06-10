@@ -1,0 +1,37 @@
+[
+    { "name": "fMRI MID",
+      "description": "Monetary Incentive Task",
+      "objects": [
+	  { "name": "edat-raw", "tag": "edat-mid-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
+	  { "name": "edat-csv", "tag": "edat-mid-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+      ]
+    },
+    { "name": "fMRI SST",
+      "description": "Stop Task",
+      "objects": [
+	  { "name": "edat-raw", "tag": "edat-sst-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
+	  { "name": "edat-csv", "tag": "edat-sst-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+      ]
+    },
+    { "name": "fMRI Emotional n-back REC",
+      "description": "Emotional n-back Task",
+      "objects": [
+	  { "name": "edat-raw", "tag": "edat-nback-rec-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
+	  { "name": "edat-csv", "tag": "edat-nback-rec-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+      ]
+    },
+    { "name": "fMRI Emotional n-back WM",
+      "description": "Emotional n-back Task",
+      "objects": [
+	  { "name": "edat-raw", "tag": "edat-nback-wm-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
+	  { "name": "edat-csv", "tag": "edat-nback-wm-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+      ]
+    },
+    { "name": "fMRI Physio Data",
+      "description": "Physio Data files from scanner",
+      "objects": [
+	  { "name": "physio session 1", "tag": "physio-session-01", "name-pattern": ".*$", "description": "A zip file that contains all the physio files for the first session." },
+	  { "name": "physio session 2", "tag": "physio-session-02", "name-pattern": ".*$", "description": "A zip file that contains all the physio files for the second session." }
+      ]
+    }        
+]

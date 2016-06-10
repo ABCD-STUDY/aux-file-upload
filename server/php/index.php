@@ -69,16 +69,18 @@ require('UploadHandler.php');
      return;
    }
 
-  // this event will be saved at this location
-  $events_file = $_SERVER['DOCUMENT_ROOT']."/applications/aux-file-upload/data/" . $site . "/afu_".$subjid."_".$sessionid."_".$run.".file_".$_POST['type'];
-  $dd = $_SERVER['DOCUMENT_ROOT']."/applications/aux-file-upload/data/" . $site;
-  if (!is_dir($dd)) {
-    mkdir($dd, 0777);
+  $r  = $_SERVER['DOCUMENT_ROOT']."/applications/aux-file-upload/data/" . $site . "/" . $subjid . "/" . $sessionid . "/";
+  if (!is_dir($r)) {
+    mkdir($r, 0777, true);
   }
+
+  // this event will be saved at this location
+  $events_file = $_POST['type']."_".$subjid."_".$sessionid."_".$run."/";
+
   $options = array(
       'param_name' => $_POST['param_name'],
-      'upload_dir' => $events_file,
-      'upload_url' => "data/" . $site . "/afu_".$subjid."_".$sessionid."_".$run.".file"
+      'upload_dir' => $r . $events_file,
+      'upload_url' => "data/" . $site . "/" . $subjid . "/" . $sessionid . "/" . $events_file
   );
   $error_messages = array();
   $upload_handler = new UploadHandler($options, true, $error_messages);

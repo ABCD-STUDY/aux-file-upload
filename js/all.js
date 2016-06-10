@@ -163,6 +163,10 @@ jQuery(document).ready(function() {
     jQuery('#session-run').change(function() {
 	storeSubjectAndName();
     });
+
+    jQuery('#download-as-zip').click(function() {
+	window.open('code/php/downloadAsZip.php');
+    });
     
     jQuery('#session-date-picker').datetimepicker({language: 'en', format: "MM/DD/YYYY" });    
     jQuery('#session-date-picker').data("DateTimePicker").setDate(new Date());
