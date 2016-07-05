@@ -27,33 +27,33 @@ function checkConnectionStatus() {
 
 
 function storeSubjectAndName() {
-    var subject = jQuery('#session-participant').val();
-    var session = jQuery('#session-name').val();
-    var run     = jQuery('#session-run').val();
+    subjid  = jQuery('#session-participant').val();
+    session = jQuery('#session-name').val();
+    run     = jQuery('#session-run').val();
 
-    if (subject === null)
+    if (subjid === null)
 	return; // don't store anything
-    jQuery('#session-participant').val(subject);
+    jQuery('#session-participant').val(subjid);
     jQuery('#session-name').val(session);
-    jQuery('.subject-id').text("Subject ID: " + subject);
+    jQuery('.subject-id').text("Subject ID: " + subjid);
     jQuery('.session-id').text("Session: " + session);
     jQuery('.run-id').text("Run: " + run);
     
-    if (subject.length > 0 && session.length > 0) {
+    if (subjid.length > 0 && session.length > 0) {
 	jQuery('#session-active').text("Active Session");
     } else {
 	jQuery('#session-active').text("No Active Session");
     }
     
     var data = {
-	"subjid": subject,
+	"subjid": subjid,
 	"sessionid": session,
 	"task": "aux-file-upload",
 	"run": run
     };
     
     jQuery.get('../../code/php/session.php', data, function() {
-	console.log('stored subject, session and run: ' +  subject + ", " + session + ", " + run );
+	console.log('stored subject, session and run: ' +  subjid + ", " + session + ", " + run );
     });
 }
 
@@ -73,6 +73,7 @@ function getSessionNamesFromREDCap() {
 	    val = "";
 	    if (i == 1) {
 		val = "selected=\"selected\"";
+		session = data[i].unique_event_name;
 	    }
 	    jQuery('#session-name').append("<option " + val + " value=\"" + data[i].unique_event_name + "\">" + data[i].event_name + "</option>");
 	}
@@ -85,21 +86,26 @@ function getParticipantNamesFromREDCap() {
 	for (var i = 0; i < data.length; i++) {
 	    jQuery('#session-participant').append("<option value=\"" + data[i] + "\">" + data[i] + "</option>");
 	}
-	jQuery('#session-run').val("01");
+	jQuery('#session-participant').val("");
+	jQuery('#session-run').val("");
 	storeSubjectAndName();
     });
 }
 
 function createFileUploads() {
     jQuery('#upload-objects').children().remove();
+    if (!subjid || subjid == "" || !session || session == "" || !run || run == "") {
+	return;
+    }
+    
     // get a list of the objects that are allowed for each subject
-    jQuery.getJSON('fileObjects.json', function(data) {
+    jQuery.getJSON('fileObjects.json?_='+Math.random(), function(data) {
 	// get list of objects
 	for (var i = 0; i < data.length; i++) {
 	    jQuery('#upload-objects').append("<div class=\"upload-group\"><h2>" + data[i].name + "</h2><p>"+data[i].description+"</p><div id=\"uo"+ i + "\"></div></div>");
 	    for (var j = 0; j < data[i].objects.length; j++) {
 		var o = data[i].objects[j];
-		jQuery('#uo'+i).append("<div class=\"upload-item\"><h3>"+ o.name + "</h3><p>" + o.description + "</p><div id=\"uoi"+i+j+"\"></div></div>");
+		jQuery('#uo'+i).append("<div class=\"upload-item\"><h3>"+ o.name + " <small>" + subjid + "_" + session + "_" + run +"</small></h3><p>" + o.description + "</p><div id=\"uoi"+i+j+"\"></div></div>");
                 jQuery('#uoi'+i+j).append("<span class=\"btn btn-success fileinput-button\"><i class=\"glyphicon glyphicon-plus\"></i><span> Select files...</span><input id=\"fileupload" + i + j + "\" type=\"file\" name=\"files"+o.tag+"[]\" multiple> </span><br><div id=\"progress" +o.tag +"\" class=\"progress\"><div class=\"progress-bar progress-bar-success\"></div></div><div id=\"files"+o.tag+"\" class=\"files\"></div>");
 
 		// start this with a this that has each o.tag in it....
@@ -109,10 +115,14 @@ function createFileUploads() {
 		    dataType: 'json',
 	            acceptFileTypes: /(\.|\/)(zip|tgz|tar.gz|bzip2)$/i,
 		    paramName: 'files'+o.tag,
-    	              formData: { 'param_name': 'files'+o.tag, 'type': o.tag },
+    	            formData: { 'param_name': 'files'+o.tag, 'type': o.tag },
 		    done: function(e, data) {
 			jQuery.each(data.files, function (index, file) {
-			    jQuery('<p/>').text(file.name).appendTo('#files'+o.tag);
+			    jQuery('<p/>').text('Upload done: ' + file.name).appendTo('#files'+o.tag);
+			    jQuery('#progress'+o.tag+' .progress-bar').css(
+			        'width',
+			        0 + '%'
+			    );
 			});
 		    },
 		    progressall: function(e,data) {
@@ -127,6 +137,7 @@ function createFileUploads() {
 		      jQuery.each(data.files, function(index, file) {
 			  var error = jQuery('<span class=\"test-danger\"/>').text('File upload failed.');
 			  console.log("error during file upload");
+			  error.appendTo('#files'+o.tag);
 			  //jQuery(data.context.children()[index]).append('<br>').append(error);
 		      });
 		  }).prop('disabled', !jQuery.support.fileInput)
@@ -156,12 +167,15 @@ jQuery(document).ready(function() {
     
     jQuery('#session-participant').change(function() {
 	storeSubjectAndName();
+        createFileUploads();
     });
     jQuery('#session-name').change(function() {
 	storeSubjectAndName();
+        createFileUploads();
     });
     jQuery('#session-run').change(function() {
 	storeSubjectAndName();
+        createFileUploads();
     });
 
     jQuery('#download-as-zip').click(function() {

@@ -103,6 +103,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/index.php" title="Back to report page">Report</a></li>
+        <li class="active"><a href="Uploading fMRI Task Data.pdf" title="Help on upload file structure">Help Uploading fMRI Task Data</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" class="connection-status" id="connection-status">Connection Status</a></li>
@@ -135,10 +136,7 @@
 	    <div class='date2'>June 2016</div>
 	  </div>
 	  <p>
-	     <center style="font-size: 32pt;">WORK IN PROGRESS</center><br/><br/><br/>
-	  </p>
-	  <p>
-	     Upload files that the ABCD study stores for each participant and imaging session. Valid participants and sessions have to be created in REDCap first (exist in your data access group and have been screened).
+	     Upload files that the ABCD study stores for each participant and imaging session. Valid participants and sessions have to be created in REDCap first (exist in your data access group and have been screened). In order to upload files for a participant, select the participant and session first, press Select files to add files for that participant.
 	  </p>
         </div>
       </div>
@@ -146,7 +144,7 @@
       <div class="row">
         <div class="col-md-12">
 
-              <h3>Select a session</h3>
+              <h2>Select a session</h2>
               <form name="sentMessage" id="sessionInfoForm" novalidate>
                 <div class="col-md-6">
 
@@ -199,10 +197,15 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
-	   <br/>
-	   <button id="download-as-zip" class="btn btn-primary">Download as zip</button>
+         &nbsp;
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+	   <button id="download-as-zip" class="btn btn-primary">Download site copy</button>
         </div>
+        <div class="col-md-9">
+	   <p>Data is stored at the DAIC immediately after each upload. You may download a copy of the uploaded data for the current participant.</p>
+	</div>
       </div>
       <div class="row">
         <div class="col-md-12">
