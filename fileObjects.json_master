@@ -2,36 +2,36 @@
     { "name": "fMRI MID",
       "description": "Monetary Incentive Task",
       "objects": [
-	  { "name": "edat-raw", "tag": "edat-mid-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
-	  { "name": "edat-csv", "tag": "edat-mid-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+	  { "name": "Raw", "tag": "mid-raw", "name-pattern": ".*$", "description": "The raw data files generated for this subject (e.g. edat2, xml and \"Export to Excel\" txt)." },
+	  { "name": "Exported", "tag": "mid-exported", "name-pattern": ".*$", "description": "Eprime exported excel file (extension .txt), same file opened with Excel and exported as a csv (windows line endings)." }
       ]
     },
     { "name": "fMRI SST",
       "description": "Stop Task",
       "objects": [
-	  { "name": "edat-raw", "tag": "edat-sst-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
-	  { "name": "edat-csv", "tag": "edat-sst-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+	  { "name": "Raw", "tag": "sst-raw", "name-pattern": ".*$", "description": "The raw data files generated for this subject (e.g. edat2, xml and \"Export to Excel\" txt)." },
+	  { "name": "Exported", "tag": "sst-exported", "name-pattern": ".*$", "description": "Eprime exported excel file (extension .txt), same file opened with Excel and exported as a csv (windows line endings)." }
       ]
     },
     { "name": "fMRI Emotional n-back REC",
       "description": "Emotional n-back Task",
       "objects": [
-	  { "name": "edat-raw", "tag": "edat-nback-rec-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
-	  { "name": "edat-csv", "tag": "edat-nback-rec-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+	  { "name": "Raw", "tag": "nback-rec-raw", "name-pattern": ".*$", "description": "The raw data files generated for this subject (e.g. edat2, xml and \"Export to Excel\" txt)." },
+	  { "name": "Exported", "tag": "nback-rec-exported", "name-pattern": ".*$", "description": "Eprime exported excel file (extension .txt), same file opened with Excel and exported as a csv (windows line endings)." }
       ]
     },
     { "name": "fMRI Emotional n-back WM",
       "description": "Emotional n-back Task",
       "objects": [
-	  { "name": "edat-raw", "tag": "edat-nback-wm-raw", "name-pattern": ".*$", "description": "The edat file exported to excel and saved with pGUID." },
-	  { "name": "edat-csv", "tag": "edat-nback-wm-csv", "name-pattern": ".*csv$", "description": "The edat file re-saved as an excel csv file." }
+	  { "name": "Raw", "tag": "nback-wm-raw", "name-pattern": ".*$", "description": "The raw data files generated for this subject (e.g. edat2, xml and \"Export to Excel\" txt)." },
+	  { "name": "Exported", "tag": "nback-wm-exported", "name-pattern": ".*$", "description": "Eprime exported excel file (extension .txt), same file opened with Excel and exported as a csv (windows line endings)." }
       ]
     },
     { "name": "fMRI Physio Data",
-      "description": "Physio Data files from scanner",
+      "description": "Physio Data files from scanner. Please note that some sites may only collect 1 session of physio, in which case you will only upload to session 1.",
       "objects": [
-	  { "name": "physio session 1", "tag": "physio-session-01", "name-pattern": ".*$", "description": "A zip file that contains all the physio files for the first session." },
-	  { "name": "physio session 2", "tag": "physio-session-02", "name-pattern": ".*$", "description": "A zip file that contains all the physio files for the second session." }
+	  { "name": "physio session 1", "tag": "physio-session-01", "name-pattern": ".*$", "description": "All the physio files for the first session." },
+	  { "name": "physio session 2", "tag": "physio-session-02", "name-pattern": ".*$", "description": "All the physio files for the second session." }
       ]
     }        
 ]
