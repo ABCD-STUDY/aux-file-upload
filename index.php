@@ -163,11 +163,13 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="session-run" class="control-label" title="Always start with the 01 event. Only in the rare case you need a second, or third run of the whole imaging session, select 02 and 03.">Event run</label>
+                    <label for="session-run" class="control-label" title="Always start with the 01 event. Only in the rare case you need a second, or third run of the whole imaging session, select 02 and 03.">Event type</label>
 		    <select class="form-control" id="session-run">
-		      <option value="01">01</option>
-		      <option value="02">02</option>
-		      <option value="03">03</option>
+		      <option value="SessionA1"  title="T1, rsFMRI (2 runs), DTI, T2, rsfMRI (up to 2 runs)">A1</option>
+		      <option value="SessionA2"  title="3 fMRI tasks">A2</option>
+		      <option value="SessionB1"  title="T1, 3 fMRI tasks">B1</option>
+		      <option value="SessionB2"  title="rsfMRI (2 runs), DTI, T2, rsfMRI (up to 2 runs)">B2</option>
+		      <option value="SessionC"   title="Combined scan">C</option>
 		    </select>		  
                     <p class="help-block text-danger"></p>
                   </div>
