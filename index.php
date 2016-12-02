@@ -81,6 +81,7 @@
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/jquery.fileupload.css">
+  <link rel="stylesheet" href="css/select2.min.css">
 
 </head>
 
@@ -233,6 +234,8 @@
 
   <script src="js/bootstrap-datetimepicker.js"></script>
   <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/select2.full.min.js"></script>
+
 
   <script type="text/javascript" src="js/all.js"></script>
 

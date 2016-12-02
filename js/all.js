@@ -62,7 +62,7 @@ function closeSession() {
     // just set to empty strings and submit
     jQuery('#session-participant').val("");
     jQuery('#session-name').val("");
-    jQuery('#session-run').val("01");
+    jQuery('#session-run').val("SessionA1");
     storeSubjectAndName();
 }
 
@@ -86,7 +86,9 @@ function getParticipantNamesFromREDCap() {
 	for (var i = 0; i < data.length; i++) {
 	    jQuery('#session-participant').append("<option value=\"" + data[i] + "\">" + data[i] + "</option>");
 	}
-	jQuery('#session-participant').val("");
+	jQuery('#session-participant').select2({ placeholder: "Select a pGUID" });
+	//jQuery('#session-participant').val(null);
+	jQuery('#session-participant').val("").trigger('change');
 	jQuery('#session-run').val("");
 	storeSubjectAndName();
     });
